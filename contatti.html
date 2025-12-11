@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contatti — Studio Nero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="brand" href="index.html" aria-label="Torna alla landing">
+        <span class="dot" aria-hidden="true"></span>
+        Studio Nero
+      </a>
+      <ul>
+        <li><a href="index.html">Landing</a></li>
+        <li><a href="contatti.html" aria-current="page">Contatti</a></li>
+        <li><a href="prezzi.html">Listino</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div>
+          <span class="badge">Parliamo di numeri</span>
+          <h1>Contatto diretto su WhatsApp o via mail.</h1>
+          <p class="lead">Scrivimi una nota con obiettivi, scadenze e budget indicativo: riceverai una risposta entro 24 ore. Gli esempi qui sotto sono modificabili in base ai tuoi dati.</p>
+          <div class="cta-row">
+            <a class="button" href="https://wa.me/391234567890?text=Ciao%20vorrei%20parlare%20del%20nuovo%20progetto">Apri WhatsApp</a>
+            <a class="button secondary" href="mailto:ciao@studionero.fake">Scrivi via email</a>
+          </div>
+          <div class="chips">
+            <span class="chip">Risposta entro 24h</span>
+            <span class="chip">Video call su richiesta</span>
+            <span class="chip">Proposte in italiano o inglese</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Coordinate provvisorie</h3>
+          <p class="lead">WhatsApp: +39 123 456 7890<br/>Email: ciao@studionero.fake<br/>Orari: 9:30 - 18:30 (CET)</p>
+          <p class="lead">Personalizza i dati prima della pubblicazione.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="form-title">
+      <div class="section-title">
+        <h2 id="form-title">Lascia un messaggio</h2>
+        <span class="badge">Gateway WhatsApp</span>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <p class="lead">Compila il form: al click verrai indirizzato su WhatsApp con il testo precompilato. Sostituisci i campi con i dati reali quando sei pronto a pubblicare.</p>
+          <form id="whatsapp-form" action="https://wa.me/391234567890" method="get">
+            <label>
+              Nome e azienda
+              <input type="text" name="nome" placeholder="Nome Cognome / Brand" required />
+            </label>
+            <label>
+              Servizio richiesto
+              <select name="servizio">
+                <option>Landing page</option>
+                <option>Copywriting</option>
+                <option>Branding completo</option>
+                <option>Altra richiesta</option>
+              </select>
+            </label>
+            <label>
+              Messaggio
+              <textarea name="text" rows="4" placeholder="Riassunto del progetto, tempistiche, budget" required></textarea>
+            </label>
+            <button class="button" type="submit">Invia su WhatsApp</button>
+          </form>
+        </article>
+        <article class="card">
+          <h3>Preferisci la mail?</h3>
+          <p class="lead">Invia a <strong>ciao@studionero.fake</strong> con: obiettivo, settore, scadenza e KPI attesi. Risposta con proposta sintetica e timing.</p>
+          <div class="divider" aria-hidden="true"></div>
+          <h3>Studio Nero</h3>
+          <p class="lead">Micro-studio indipendente tra Milano e remoto. Ci muoviamo veloce, con focus su design scuro, contrasti neon e copy mirato.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div>Studio Nero — connessioni veloci, conversazioni chiare.</div>
+      <div class="footer-nav">
+        <a href="index.html">Landing</a>
+        <a href="prezzi.html">Listino</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('whatsapp-form');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const nome = formData.get('nome');
+      const servizio = formData.get('servizio');
+      const messaggio = formData.get('text');
+      const testo = encodeURIComponent(`${nome} — ${servizio}\n${messaggio}`);
+      const url = `${form.action}?text=${testo}`;
+      window.location.href = url;
+    });
+  </script>
+</body>
+</html>
